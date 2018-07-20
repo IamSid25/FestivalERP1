@@ -21,6 +21,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private ArrayList<TitleCollector> TitleList;
     private LayoutInflater mInflater;
     Context mCtx;
+    private ItemClickListener clickListener;
 
 
     public MyRecyclerViewAdapter(ArrayList<TitleCollector> TitleList, Context mCtx) {
@@ -63,6 +64,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             imgIcon = (ImageView) itemView.findViewById(R.id.ivContentIcon);
         }
 
+    }
+    public interface ItemClickListener{
+        void onItemClick(View view,int position);
     }
 }
 

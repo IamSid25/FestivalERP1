@@ -18,7 +18,7 @@
             android:title="Rate Us" />
         <item
             android:id="@+id/nav_feedback"
-            android:icon="@drawable/ic_menu_feedback"
+            android:icon="@drawable/icons8_feedback_100"
             android:title="Feedback" />
         <item
             android:id="@+id/nav_share"

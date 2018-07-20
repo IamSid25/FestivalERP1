@@ -20,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.iam_sid.festivalerp.R;
 import com.iam_sid.festivalerp.adapter.MyRecyclerViewAdapter;
@@ -29,7 +30,7 @@ import com.iam_sid.festivalerp.utils.TitleCollector;
 import java.util.ArrayList;
 
 public class Dashboard extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,MyRecyclerViewAdapter.ItemClickListener {
 
     MyRecyclerViewAdapter adapter;
     RecyclerView recyclerView;
@@ -65,12 +66,12 @@ public class Dashboard extends AppCompatActivity
 
         content=new ArrayList<>();
 
-        content.add(new TitleCollector(this,"History", R.drawable.ic_menu_feedback));
-        content.add(new TitleCollector(this,"Expenditure", R.drawable.ic_menu_feedback));
-        content.add(new TitleCollector(this,"Notice", R.drawable.ic_menu_feedback));
-        content.add(new TitleCollector(this,"Photos", R.drawable.ic_menu_feedback));
-        content.add(new TitleCollector(this,"Videos", R.drawable.ic_menu_feedback));
-        content.add(new TitleCollector(this,"Feedback", R.drawable.ic_menu_feedback));
+        content.add(new TitleCollector(this,"History", R.drawable.icons8_happy_100));
+        content.add(new TitleCollector(this,"Expenditure", R.drawable.icons8_rupee_100));
+        content.add(new TitleCollector(this,"Notice", R.drawable.icons8_notifications_100));
+        content.add(new TitleCollector(this,"Photos", R.drawable.icons8_images_100));
+        content.add(new TitleCollector(this,"Videos", R.drawable.icons8_video_100));
+        content.add(new TitleCollector(this,"Feedback", R.drawable.icons8_heart_100));
 
         MyRecyclerViewAdapter adapter= new MyRecyclerViewAdapter(content,this);
         recyclerView.setAdapter(adapter);
@@ -125,7 +126,8 @@ public class Dashboard extends AppCompatActivity
                 rateApp();
                 break;
             case R.id.nav_feedback:
-
+                Intent feedbackIntent=new Intent(Dashboard.this,Feedback.class);
+                startActivity(feedbackIntent);
                 break;
             case R.id.nav_share:
                 share();
@@ -190,6 +192,33 @@ public class Dashboard extends AppCompatActivity
             startActivity(Intent.createChooser(intent,"Choose one"));
         }catch(Exception e){
            // e.toString();
+        }
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        int id= (int) adapter.getItemId(position);
+        switch (id){
+            case 0:
+                Intent historyIntent=new Intent(Dashboard.this,History.class);
+                startActivity(historyIntent);
+                break;
+            case 1:
+                Toast.makeText(this,"Selected on"+adapter.getItemId(position),Toast.LENGTH_LONG).show();
+                break;
+            case 2:
+                Toast.makeText(this,"Selected on"+adapter.getItemId(position),Toast.LENGTH_LONG).show();
+                break;
+            case 3:
+                Toast.makeText(this,"Selected on"+adapter.getItemId(position),Toast.LENGTH_LONG).show();
+                break;
+            case 4:
+                Toast.makeText(this,"Selected on"+adapter.getItemId(position),Toast.LENGTH_LONG).show();
+                break;
+            case 5:
+                Intent feedbackIntent=new Intent(Dashboard.this,Feedback.class);
+                startActivity(feedbackIntent);
+                break;
         }
     }
 }

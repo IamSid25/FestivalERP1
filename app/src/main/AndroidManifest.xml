@@ -19,10 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SplashScreen"
-            android:theme="@style/AppTheme.Fullscreen"
-            android:screenOrientation="portrait">
-        </activity>
+        <activity
+            android:name=".activity.SplashScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Fullscreen" />
+        <activity android:name=".activity.History" />
+        <activity android:name=".activity.Feedback"></activity>
     </application>
 
 </manifest>
